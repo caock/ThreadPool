@@ -32,15 +32,13 @@
 #include <future>
 #include <functional>
 #include <stdexcept>
+#include <string>
 #include <iostream>
 
-#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__)
+
+#if defined(WIN32) || defined(_WIN32) || defined(__WIN32__) || defined(__NT__) || defined(WIN64) || defined(_WIN64)
    //define something for Windows (32-bit and 64-bit, this part is common)
-   #ifdef _WIN64
-      //define something for Windows (64-bit only)
-   #else
-      //define something for Windows (32-bit only)
-   #endif
+   #include "windows_cpu.h"
 #elif __APPLE__
     #include <TargetConditionals.h>
     #if TARGET_IPHONE_SIMULATOR
